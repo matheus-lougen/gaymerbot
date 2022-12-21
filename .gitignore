@@ -12,6 +12,7 @@ build/
 data/
 pyvenv.cfg
 develop-eggs/
+discord.py/
 dist/
 downloads/
 eggs/
