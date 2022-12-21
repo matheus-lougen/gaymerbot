@@ -20,9 +20,9 @@ class extension_commands(commands.Cog):
     async def load(self, ctx, extension):
         try:
             await ctx.message.delete()
-            await self.client.load_extension(f'extensions.{extension}')
+            await self.client.load_extension(f'gaymerbot.extensions.{extension}')
             self.log.info(f'The extension {extension} was sucessfully loaded')
-        except commands.ExtensionAlreadlyLoaded:
+        except commands.ExtensionAlreadyLoaded:
             await ctx.send(f'The extension {extension} is alreadly loaded')
             self.log.exception(f'The extension {extension} is alreadly loaded')
         except Exception:
@@ -35,7 +35,7 @@ class extension_commands(commands.Cog):
     async def unload(self, ctx, extension):
         try:
             await ctx.message.delete()
-            await self.client.unload_extension(f'extensions.{extension}')
+            await self.client.unload_extension(f'gaymerbot.extensions.{extension}')
             self.log.info(f'The extension {extension} was sucessfully unloaded')
         except commands.ExtensionNotLoaded:
             await ctx.send(f'The extension {extension} is not loaded')
@@ -50,7 +50,7 @@ class extension_commands(commands.Cog):
     async def reload(self, ctx, extension):
         try:
             await ctx.message.delete()
-            await self.client.reload_extension(f'extensions.{extension}')
+            await self.client.reload_extension(f'gaymerbot.extensions.{extension}')
             self.log.info(f'The extension {extension} was sucessfully reloaded')
         except commands.ExtensionNotLoaded:
             await ctx.send(f'The extension {extension} is not loaded')
