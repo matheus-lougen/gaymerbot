@@ -1,0 +1,7 @@
+# gaymerbot
+
+# Installation
+
+# Usage
+
+# Credits
