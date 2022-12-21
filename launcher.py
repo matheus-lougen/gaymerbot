@@ -13,7 +13,6 @@ from gaymerbot.modules import Config
 try:
     parser = argparse.ArgumentParser(description='Launch the discord bot')
     parser.add_argument("-d", "--debug", type=bool, required=False, help='Enable main logger debug mode')
-    parser.add_argument("-dc", "--debugcommands", type=bool, required=False, help='Enable comamnds logger debug mode')
     parser.add_argument("-dd", "--discorddebug", type=bool, required=False, help='Enable discord logger debug mode')
     parser.add_argument("-dhd", "--discordhttpsdebug", type=bool, required=False, help='Enable discord.https logger debug mode')
     args = parser.parse_args()
@@ -40,7 +39,6 @@ try:
     logger = Logger()
     logger.setup_formatters()
     log = logger.setup_logger('main', debug_mode=args.debug, file_level=logging.INFO, stream_level=logging.INFO)
-    ticket_log = logger.setup_logger('ticket', debug_mode=args.debug, file_level=logging.WARNING, stream_level=logging.WARNING)
     commands_log = logger.setup_logger('commands', debug_mode=args.debug, file_level=logging.INFO, stream_level=logging.INFO)
     discord_log = logger.setup_logger('discord', debug_mode=args.discorddebug, file_level=logging.INFO, stream_level=logging.INFO)
     discord_https_log = logger.setup_logger('discord.https', debug_mode=args.discordhttpsdebug, file_level=logging.WARNING, stream_level=logging.WARNING)

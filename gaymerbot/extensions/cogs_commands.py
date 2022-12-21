@@ -64,7 +64,7 @@ class extension_commands(commands.Cog):
     @commands.is_owner()
     async def sync(self, ctx, arg=None):
         await ctx.message.delete()
-        if arg == '~':
+        if arg == 'guild':
             synced = await ctx.bot.tree.sync(guild=ctx.guild)
             self.log.warning(f'Synced {len(synced)} commands on this guild')
         else:
