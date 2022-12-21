@@ -10,7 +10,7 @@ from .modules import Logger
 log = Logger.get_logger('main')
 
 
-class SupremeBot(commands.Bot):
+class Client(commands.Bot):
     def __init__(self, start_time, config, initial_extensions):
         self.start_time = start_time
         self.config = config

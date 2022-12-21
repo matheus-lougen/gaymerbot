@@ -1,2 +1,2 @@
 from .modules import Config, Logger
-from .gaymerbot import GaymerBot
+from .client import Client

@@ -6,7 +6,7 @@ import logging
 import platform
 import argparse
 
-from gaymerbot import GaymerBot
+from gaymerbot import Client
 from gaymerbot.modules import Config
 
 
@@ -65,7 +65,7 @@ def setup(initial_extensions, start_time, config_path):
     log.debug(f'Python version [{platform.python_version()}]')
     log.debug(f'OS information [{platform.system()} {platform.release()} ({os.name})]')
     config = Config(config_path)
-    client = GaymerBot(start_time, config, initial_extensions)
+    client = Client(start_time, config, initial_extensions)
     asyncio.run(main(client, config))
 
 
