@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 
 
-class PurgeView(discord.ui.View):
+class Purge(discord.ui.View):
     def __init__(self, client, limit, user):
         # User object that sent the command
         self.user = user
@@ -30,12 +30,3 @@ class PurgeView(discord.ui.View):
             await interaction.message.delete()
         else:
             await interaction.response.send_message('Essa interação não é sua!', ephemeral=True)
-
-
-class AdminCommandsViews(commands.Cog):
-    def __init__(self, client):
-        self.client = client
-
-
-async def setup(client: commands.Bot) -> None:
-    await client.add_cog(AdminCommandsViews(client))

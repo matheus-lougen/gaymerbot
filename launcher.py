@@ -32,7 +32,6 @@ if args.discordhttpsdebug is None:
 logger = Logger()
 logger.setup_formatters()
 log = logger.setup_logger('main', debug_mode=args.debug, file_level=logging.INFO, stream_level=logging.INFO)
-view_log = logger.setup_logger('views', debug_mode=args.debug, file_level=logging.INFO, stream_level=logging.INFO)
 commands_log = logger.setup_logger('commands', debug_mode=args.debug, file_level=logging.INFO, stream_level=logging.INFO)
 extension_log = logger.setup_logger('extensions', debug_mode=args.debug, file_level=logging.INFO, stream_level=logging.INFO)
 discord_log = logger.setup_logger('discord', debug_mode=args.discorddebug, file_level=logging.INFO, stream_level=logging.INFO)
@@ -40,11 +39,11 @@ discord_https_log = logger.setup_logger('discord.https', debug_mode=args.discord
 
 
 @logger.exception_catcher('main')
-def setup(initial_extensions, initial_views, start_time, config):
+def setup(initial_extensions, start_time, config):
     log.debug(f'Discord.py version [{discord.__version__}]')
     log.debug(f'Python version [{platform.python_version()}]')
     log.debug(f'OS information [{platform.system()} {platform.release()} ({os.name})]')
-    client = Client(start_time, config, initial_extensions, initial_views)
+    client = Client(start_time, config, initial_extensions)
     asyncio.run(main(client, config))
     # Extensions to load when the bot turns on
 
@@ -59,13 +58,10 @@ initial_extensions = (
     'gaymerbot.extensions.developer_commands',
     'gaymerbot.extensions.admin_commands'
 )
-initial_views = (
-    'gaymerbot.views.admin_commands',
-    ''
-)
+
 # CLient startup timestamp
 start_time = time.time()
 
 config_path = './data/config.yaml'
 config = Config(config_path)
-setup(initial_extensions, initial_views, start_time, config)
+setup(initial_extensions, start_time, config)
