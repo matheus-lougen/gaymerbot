@@ -9,7 +9,7 @@ Nevertheless, the installation steps are as follows:
 1.  **Some things to know before running**
 
 The project was developed on a Linux environment and it's highly recommended that you run it on the same.
-Make sure you have Python3.10 or higher installed and [virtualenv](https://virtualenv.pypa.io/en/latest/installation.html) installed.
+Make sure you have Python3.10 or higher installed and [virtualenv](https://virtualenv.pypa.io/en/latest/installation.html) installed via pip, you can install using `$ pip install --user virtualenv`.
 
 2.  **Clone this repository to your machine**
 
@@ -20,16 +20,18 @@ Run `$ git clone -b development https://github.com/SystemFalll/gaymerbot` to get
 3.  **Setup venv**
 
 Access the project folder if you haven't already `$ cd gaymerbot` 
-Then just do  `virtualenv venv venv`
+Then just do  `$ python3.10 -m virtualenv venv`
 
 4.  **Install dependencies**
 
 Clone [discord.py](https://github.com/Rapptz/discord.py) using `$ git clone https://github.com/Rapptz/discord.py`
-Then run  `$ pip install -r requirements.txt`
+Activate the venv by running `$ source venv/bin/activate`
+Install the discord.py library `$ cd discord.py && pip install .[voice] -r requirements.txt`
+Then go back to the project file `$ cd ..` and run  `$ pip install -r requirements.txt`
 
 4.  **Create data files**
 
-Run `$ mkdir data/logs && touch data/config.yaml`
+Run `$ mkdir data && mkdir data/logs && touch data/config.yaml`
 See *base_config.yaml* for a basic config structure
 
 5.  **launching the bot**
