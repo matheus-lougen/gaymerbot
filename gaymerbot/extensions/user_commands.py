@@ -27,6 +27,12 @@ class user_commands(commands.Cog):
         latency = round(self.client.latency * 1000)
         await interaction.response.send_message(f'🏓 Pong! ``{latency}ms``')
 
+    @app_commands.command(name='codigofonte', description='Link para o código fonte do projeto')
+    @app_commands.guild_only()
+    async def sourcecode(self, interaction: discord.Interaction) -> None:
+        # /ping
+        await interaction.response.send_message(f'Sinta-se a vontade para fazer um Pull Request ou abrir um Issue!\nhttps://github.com/SystemFalll/gaymerbot')
+
     @app_commands.command(name='avatar', description='Envia o avatar do usuário')
     @app_commands.describe(user='O membro para enviar o avatar')
     @app_commands.rename(user='membro')
