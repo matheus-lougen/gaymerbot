@@ -42,8 +42,3 @@ class Client(commands.Bot):
                     log.warning(f'Failed to load the extension [{failed}]')
             else:
                 log.debug('No errors while loading extensions')
-
-
-if __name__ == '__main__':
-    log.critical('Use the launcher.py to run the bot!')
-    sys.exit()
