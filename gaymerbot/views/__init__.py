@@ -1,1 +1,1 @@
-from .admin_commands_views import *
+from .admin_commands import PurgeView
