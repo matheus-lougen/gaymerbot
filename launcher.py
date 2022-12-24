@@ -53,10 +53,11 @@ async def main(client, config):
         await client.start(config.token)
 
 initial_extensions = (
+    'gaymerbot.extensions.tags',
     'gaymerbot.extensions.events',
     'gaymerbot.extensions.user_commands',
-    'gaymerbot.extensions.developer_commands',
-    'gaymerbot.extensions.admin_commands'
+    'gaymerbot.extensions.admin_commands',
+    'gaymerbot.extensions.developer_commands'
 )
 
 # CLient startup timestamp
