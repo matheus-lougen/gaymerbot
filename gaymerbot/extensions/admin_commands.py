@@ -22,7 +22,7 @@ class admin_commands(commands.Cog):
         await interaction.response.send_message(f'Tem certeza que deseja limpar **{limit}** mensagens neste canal ?')
         await interaction.edit_original_response(view=Purge(self.client, limit, interaction.user))
 
-    @app_commands.command(name='menudevirificacao', description='Envia o menu de verificação no canal atual')
+    @app_commands.command(name='menudeverificacao', description='Envia o menu de verificação no canal atual')
     @app_commands.default_permissions(administrator=True)
     @app_commands.guild_only()
     async def verifymenu(self, interaction: discord.Interaction) -> None:
