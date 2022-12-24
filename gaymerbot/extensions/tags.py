@@ -3,7 +3,7 @@ from discord.ext import commands
 from discord import app_commands
 
 from gaymerbot.modules import Logger
-from gaymerbot.views import FurryView, AgeView, SexualityView, NotificationsView, GamesView
+from gaymerbot.views import Furry, Age, Sexuality, Notifications, Games
 
 
 class Tags(commands.Cog):
@@ -20,11 +20,11 @@ class Tags(commands.Cog):
         sexuality_embed = discord.Embed(title='❤ » Orientação sexual', description='Qual sua orientação sexual ?', colour=discord.Colour.random())
         games_embed = discord.Embed(title='🎮 » Jogos', description='Quais jogos você joga ou se interessa ?', colour=discord.Colour.random())
         notification_embed = discord.Embed(title='🔔 » Notificações', description='´Você deseja receber notificações ?', colour=discord.Colour.random())
-        await interaction.channel.send(embed=furry_embed, view=FurryView(self.client))
-        await interaction.channel.send(embed=age_embed, view=AgeView(self.client))
-        await interaction.channel.send(embed=sexuality_embed, view=SexualityView(self.client))
-        await interaction.channel.send(embed=games_embed, view=GamesView(self.client))
-        await interaction.channel.send(embed=notification_embed, view=NotificationsView(self.client))
+        await interaction.channel.send(embed=furry_embed, view=Furry(self.client))
+        await interaction.channel.send(embed=age_embed, view=Age(self.client))
+        await interaction.channel.send(embed=sexuality_embed, view=Sexuality(self.client))
+        await interaction.channel.send(embed=games_embed, view=Games(self.client))
+        await interaction.channel.send(embed=notification_embed, view=Notifications(self.client))
         await interaction.response.send_message('Menu sent!', ephemeral=True)
 
 

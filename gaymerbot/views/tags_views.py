@@ -38,7 +38,7 @@ class Interaction():
         return await self.defer()
 
 
-class AgeView(discord.ui.View):
+class Age(discord.ui.View):
     def __init__(self, client):
         self.client = client
         super().__init__(timeout=None)
@@ -57,7 +57,7 @@ class AgeView(discord.ui.View):
         await interaction.fetch_option('skip', select.values)
 
 
-class SexualityView(discord.ui.View):
+class Sexuality(discord.ui.View):
     def __init__(self, client):
         self.client = client
         super().__init__(timeout=None)
@@ -80,7 +80,7 @@ class SexualityView(discord.ui.View):
         await interaction.fetch_option('skip', select.values)
 
 
-class FurryView(discord.ui.View):
+class Furry(discord.ui.View):
     def __init__(self, client):
         self.client = client
         super().__init__(timeout=None)
@@ -97,7 +97,7 @@ class FurryView(discord.ui.View):
         await interaction.fetch_option('NãoFurry', select.values)
 
 
-class NotificationsView(discord.ui.View):
+class Notifications(discord.ui.View):
     def __init__(self, client):
         self.client = client
         super().__init__(timeout=None)
@@ -114,7 +114,7 @@ class NotificationsView(discord.ui.View):
         await interaction.fetch_option('skip', select.values)
 
 
-class GamesView(discord.ui.View):
+class Games(discord.ui.View):
     def __init__(self, client):
         self.client = client
         super().__init__(timeout=None)
