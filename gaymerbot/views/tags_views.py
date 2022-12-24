@@ -1,25 +1,19 @@
 import discord
 from discord import utils
-# from discord.ext import commands
-
-from gaymerbot.modules import Logger
-
-log = Logger.get_logger('commands')
 
 
-class Interaction():
-    """docstring for User"""
-
-    def __init__(self, interaction):
+class SelectMenu():
+    def __init__(self, interaction, select):
         self.interaction = interaction
+        self.select = select
 
-    async def fetch_option(self, name, values):
-        if name == 'skip':
+    async def fetch_option(self, value):
+        if value == 'skip':
             return await self.defer()
-        if name in values:
-            return await self.add_role(name)
+        if value in self.select.values:
+            return await self.add_role(value)
         else:
-            return await self.remove_role(name)
+            return await self.remove_role(value)
 
     async def defer(self):
         if self.interaction.response.is_done():
@@ -27,13 +21,13 @@ class Interaction():
         elif not self.interaction.response.is_done():
             return await self.interaction.response.defer()
 
-    async def add_role(self, name):
-        role = utils.get(self.interaction.guild.roles, name=name)
+    async def add_role(self, role_name):
+        role = utils.get(self.interaction.guild.roles, name=role_name)
         await self.interaction.user.add_roles(role)
         return await self.defer()
 
-    async def remove_role(self, name):
-        role = utils.get(self.interaction.guild.roles, name=name)
+    async def remove_role(self, role_name):
+        role = utils.get(self.interaction.guild.roles, name=role_name)
         await self.interaction.user.remove_roles(role)
         return await self.defer()
 
@@ -51,10 +45,10 @@ class Age(discord.ui.View):
 
     @discord.ui.select(cls=discord.ui.Select, placeholder='Escolha uma opção', min_values=1, max_values=1, options=options, custom_id='dropdown:age')
     async def age_select(self, interaction: discord.Interaction, select: discord.ui.Select):
-        interaction = Interaction(interaction)
-        await interaction.fetch_option('+18', select.values)
-        await interaction.fetch_option('-18', select.values)
-        await interaction.fetch_option('skip', select.values)
+        selectmenu = SelectMenu(interaction, select)
+        await selectmenu.fetch_option('+18')
+        await selectmenu.fetch_option('-18')
+        await selectmenu.fetch_option('skip')
 
 
 class Sexuality(discord.ui.View):
@@ -72,12 +66,12 @@ class Sexuality(discord.ui.View):
 
     @discord.ui.select(cls=discord.ui.Select, placeholder='Escolha uma opção', min_values=1, max_values=1, options=options, custom_id='dropdown:sexuality')
     async def age_select(self, interaction: discord.Interaction, select: discord.ui.Select):
-        interaction = Interaction(interaction)
-        await interaction.fetch_option('Heterossexual', select.values)
-        await interaction.fetch_option('Homossexual', select.values)
-        await interaction.fetch_option('Bissexual', select.values)
-        await interaction.fetch_option('Panssexual', select.values)
-        await interaction.fetch_option('skip', select.values)
+        selectmenu = SelectMenu(interaction, select)
+        await selectmenu.fetch_option('Heterossexual')
+        await selectmenu.fetch_option('Homossexual')
+        await selectmenu.fetch_option('Bissexual')
+        await selectmenu.fetch_option('Panssexual')
+        await selectmenu.fetch_option('skip')
 
 
 class Furry(discord.ui.View):
@@ -92,9 +86,9 @@ class Furry(discord.ui.View):
 
     @discord.ui.select(cls=discord.ui.Select, placeholder='Escolha uma opção', min_values=1, max_values=1, options=options, custom_id='dropdown:furry')
     async def age_select(self, interaction: discord.Interaction, select: discord.ui.Select):
-        interaction = Interaction(interaction)
-        await interaction.fetch_option('Furry', select.values)
-        await interaction.fetch_option('NãoFurry', select.values)
+        selectmenu = SelectMenu(interaction, select)
+        await selectmenu.fetch_option('Furry')
+        await selectmenu.fetch_option('NãoFurry')
 
 
 class Notifications(discord.ui.View):
@@ -109,9 +103,9 @@ class Notifications(discord.ui.View):
 
     @discord.ui.select(cls=discord.ui.Select, placeholder='Escolha uma ou mais opções', min_values=1, max_values=1, options=options, custom_id='dropdown:notifications')
     async def age_select(self, interaction: discord.Interaction, select: discord.ui.Select):
-        interaction = Interaction(interaction)
-        await interaction.fetch_option('Noticações', select.values)
-        await interaction.fetch_option('skip', select.values)
+        selectmenu = SelectMenu(interaction, select)
+        await selectmenu.fetch_option('Noticações')
+        await selectmenu.fetch_option('skip')
 
 
 class Games(discord.ui.View):
@@ -131,11 +125,11 @@ class Games(discord.ui.View):
 
     @discord.ui.select(cls=discord.ui.Select, placeholder='Escolha uma ou mais opções', min_values=1, max_values=7, options=options, custom_id='dropdown:games')
     async def age_select(self, interaction: discord.Interaction, select: discord.ui.Select):
-        interaction = Interaction(interaction)
-        await interaction.fetch_option('Minecraft', select.values)
-        await interaction.fetch_option('Valorant', select.values)
-        await interaction.fetch_option('Warzone', select.values)
-        await interaction.fetch_option('Pubg', select.values)
-        await interaction.fetch_option('Roblox', select.values)
-        await interaction.fetch_option('Factorio', select.values)
-        await interaction.fetch_option('skip', select.values)
+        selectmenu = SelectMenu(interaction, select)
+        await selectmenu.fetch_option('Minecraft')
+        await selectmenu.fetch_option('Valorant')
+        await selectmenu.fetch_option('Warzone')
+        await selectmenu.fetch_option('Pubg')
+        await selectmenu.fetch_option('Roblox')
+        await selectmenu.fetch_option('Factorio')
+        await selectmenu.fetch_option('skip')

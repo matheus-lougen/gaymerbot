@@ -1,4 +1,3 @@
-
 import discord
 from discord.ext import commands
 from discord import app_commands
@@ -17,7 +16,6 @@ class admin_commands(commands.Cog):
     @app_commands.default_permissions(manage_messages=True)
     @app_commands.rename(limit='limite')
     @app_commands.guild_only()
-    # /purge [limit]
     async def purge(self, interaction: discord.Interaction, limit: int = 99) -> None:
         await interaction.response.send_message(f'Tem certeza que deseja limpar **{limit}** mensagens neste canal ?')
         await interaction.edit_original_response(view=Purge(self.client, limit, interaction.user))

@@ -1,4 +1,3 @@
-# import discord
 from discord.ext import commands
 
 from gaymerbot.modules import Logger
@@ -15,7 +14,6 @@ class DeveloperCommands(commands.Cog):
     async def extension(self, ctx):
         pass
 
-    # !extension load {extension} - load a extension
     @extension.command()
     @commands.is_owner()
     async def load(self, ctx, extension):
@@ -30,7 +28,6 @@ class DeveloperCommands(commands.Cog):
             await ctx.send(f'An error ocurred while loading the extension ``{extension}``')
             self.extension_log.exception(f'An error ocurred while loading the extension {extension}')
 
-    # !extension unload {extension} - unload a extension
     @extension.command()
     @commands.is_owner()
     async def unload(self, ctx, extension):
@@ -45,7 +42,6 @@ class DeveloperCommands(commands.Cog):
             await ctx.send(f'An error ocurred while unloading the extension ``{extension}``')
             self.extension_log.exception(f'An error ocurred while unloading the extension {extension}')
 
-    # !extension reload {extension} - reload a extension
     @extension.command()
     @commands.is_owner()
     async def reload(self, ctx, extension):
@@ -60,7 +56,6 @@ class DeveloperCommands(commands.Cog):
             await ctx.send(f'An error ocurred while reloading the extension ``{extension}``')
             self.extension_log.exception(f'An error ocurred while reloading the extension {extension}')
 
-    # !sync {~} - sync slash commands globally or on this ctx guild only
     @commands.command()
     @commands.is_owner()
     async def sync(self, ctx, arg=None):

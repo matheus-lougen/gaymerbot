@@ -1,11 +1,13 @@
+#!/usr/bin/env python
+
 import os
-import sys
 import time
-import asyncio
 import logging
-import discord
-import platform
+import asyncio
 import argparse
+import platform
+
+import discord
 
 from gaymerbot import Client
 from gaymerbot.modules import Logger

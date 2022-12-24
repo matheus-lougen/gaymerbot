@@ -7,7 +7,7 @@ from gaymerbot.modules import Logger
 class events(commands.Cog):
     def __init__(self, client):
         self.client = client
-        self.log = Logger.get_logger('commands')
+        self.log = Logger.get_logger('events')
 
     @commands.Cog.listener()
     async def on_ready(self):
