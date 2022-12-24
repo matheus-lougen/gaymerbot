@@ -1,5 +1,6 @@
+"""View classes from discord.py module"""
+
 import discord
-from discord.ext import commands
 
 
 class Purge(discord.ui.View):
@@ -30,3 +31,13 @@ class Purge(discord.ui.View):
             await interaction.message.delete()
         else:
             await interaction.response.send_message('Essa interação não é sua!', ephemeral=True)
+
+
+class Verify():
+    def __init__(self, client):
+        self.client = client
+
+    @discord.ui.button(label='Verificar', style=discord.ButtonStyle.green, custom_id='button:verify')
+    async def verify(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.user.add_roles(discord.utils.get(interaction.guild.roles, name='Membro'))
+        await interaction.response.send_message('Verificado com sucesso!', ephemeral=True)
