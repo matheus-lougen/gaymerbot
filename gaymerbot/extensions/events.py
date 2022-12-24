@@ -1,4 +1,3 @@
-# import discord
 from discord.ext import commands
 
 from gaymerbot.modules import Logger

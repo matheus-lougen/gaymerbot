@@ -24,8 +24,9 @@ class admin_commands(commands.Cog):
     @app_commands.default_permissions(administrator=True)
     @app_commands.guild_only()
     async def verifymenu(self, interaction: discord.Interaction) -> None:
-        embed = discord.Embed(title='Verificação', description='Clique no botão abaixo para obter acesso ao servidor!', color=0x087500)
+        embed = discord.Embed(title='Verificação', description='Clique no botão abaixo para obter acesso ao servidor!', color=discord.Colour.random())
         await interaction.channel.send(embed=embed, view=Verify(self.client))
+        return await interaction.response.send_message('Menu enviado!', ephemeral=True)
 
 
 async def setup(client):

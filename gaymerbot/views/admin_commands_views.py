@@ -33,7 +33,7 @@ class Verify(discord.ui.View):
         self.client = client
         super().__init__(timeout=None)
 
-    @discord.ui.button(label='Verificar', style=discord.ButtonStyle.green, custom_id='button:verify')
+    @discord.ui.button(label='Verificar', style=discord.ButtonStyle.grey, custom_id='button:verify')
     async def verify(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.user.add_roles(discord.utils.get(interaction.guild.roles, name='Membro'))
         await interaction.response.send_message('Verificado com sucesso!', ephemeral=True)
