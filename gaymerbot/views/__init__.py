@@ -1,2 +1,2 @@
-from .admin_commands_views import Purge
-from .tags_views import FurryView, AgeView, SexualityView, GamesView, NotificationsView
+from .admin_commands_views import Purge, Verify
+from .tags_views import Furry, Age, Sexuality, Games, Notifications

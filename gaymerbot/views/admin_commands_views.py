@@ -28,9 +28,10 @@ class Purge(discord.ui.View):
             await interaction.response.send_message('Essa interação não é sua!', ephemeral=True)
 
 
-class Verify():
+class Verify(discord.ui.View):
     def __init__(self, client):
         self.client = client
+        super().__init__(timeout=None)
 
     @discord.ui.button(label='Verificar', style=discord.ButtonStyle.green, custom_id='button:verify')
     async def verify(self, interaction: discord.Interaction, button: discord.ui.Button):
