@@ -97,14 +97,14 @@ class Notifications(discord.ui.View):
         super().__init__(timeout=None)
 
     options = [
-        discord.SelectOption(label='Sim', value='Noticações', description='Eu quero receber notificações sobre coisas novas', emoji='➡'),
+        discord.SelectOption(label='Sim', value='Notificações', description='Eu quero receber notificações sobre coisas novas', emoji='➡'),
         discord.SelectOption(label='Não', value='skip', description='Eu não quero receber notificações sobre coisas novas', emoji='➡')
     ]
 
     @discord.ui.select(cls=discord.ui.Select, placeholder='Escolha uma ou mais opções', min_values=1, max_values=1, options=options, custom_id='dropdown:notifications')
     async def age_select(self, interaction: discord.Interaction, select: discord.ui.Select):
         selectmenu = SelectMenu(interaction, select)
-        await selectmenu.fetch_option('Noticações')
+        await selectmenu.fetch_option('Notificações')
         await selectmenu.fetch_option('skip')
 
 
