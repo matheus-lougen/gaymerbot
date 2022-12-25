@@ -25,7 +25,7 @@ class Tags(commands.Cog):
         await interaction.channel.send(embed=sexuality_embed, view=Sexuality(self.client))
         await interaction.channel.send(embed=games_embed, view=Games(self.client))
         await interaction.channel.send(embed=notification_embed, view=Notifications(self.client))
-        await interaction.response.send_message('Menu sent!', ephemeral=True)
+        await interaction.response.send_message('Menu enviado!', ephemeral=True)
 
 
 async def setup(client):
