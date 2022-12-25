@@ -10,22 +10,14 @@ class Purge(discord.ui.View):
 
     @discord.ui.button(label='Sim', style=discord.ButtonStyle.green, custom_id='button:purge_yes')
     async def yes(self, interaction: discord.Interaction, button: discord.ui.Button):
-        # TODO: remove if/else block, make interaction ephemeral
-        if interaction.user.id == self.user.id:
-            await interaction.response.defer()
-            await interaction.channel.purge(limit=self.limit)
-            await interaction.channel.send(f'**{self.limit}** mensagens foram excluídas desse canal por {interaction.user.mention}!', delete_after=10.0)
-        else:
-            await interaction.response.send_message('Essa interação não é sua!', ephemeral=True)
+        await interaction.response.defer()
+        await interaction.channel.purge(limit=self.limit)
+        return await interaction.channel.send(f'**{self.limit}** mensagens foram excluídas desse canal por {interaction.user.mention}!', delete_after=5.0)
 
     @discord.ui.button(label='Não', style=discord.ButtonStyle.red, custom_id='button:purge_no')
     async def no(self, interaction: discord.Interaction, button: discord.ui.Button):
-        # TODO: remove if/else block, make interaction ephemeral
-        if interaction.user.id == self.user.id:
-            await interaction.response.send_message(f'Purge cancelado!', ephemeral=True)
-            await interaction.message.delete()
-        else:
-            await interaction.response.send_message('Essa interação não é sua!', ephemeral=True)
+        await interaction.response.send_message(f'Purge cancelado!', ephemeral=True)
+        return await interaction.message.delete()
 
 
 class Verify(discord.ui.View):

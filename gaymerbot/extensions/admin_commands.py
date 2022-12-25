@@ -17,8 +17,7 @@ class admin_commands(commands.Cog):
     @app_commands.rename(limit='limite')
     @app_commands.guild_only()
     async def purge(self, interaction: discord.Interaction, limit: int = 99) -> None:
-        await interaction.response.send_message(f'Tem certeza que deseja limpar **{limit}** mensagens neste canal ?')
-        await interaction.edit_original_response(view=Purge(self.client, limit, interaction.user))
+        await interaction.response.send_message(f'Tem certeza que deseja limpar **{limit}** mensagens neste canal ?', view=Purge(self.client, limit, interaction.user), ephemeral=True)
 
     @app_commands.command(name='menudeverificacao', description='Envia o menu de verificação no canal atual')
     @app_commands.default_permissions(administrator=True)
