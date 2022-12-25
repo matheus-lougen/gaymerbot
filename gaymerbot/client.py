@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 
 from .modules import Logger
+from .views import Furry, Age, Sexuality, Games, Notifications, Verify
 
 
 class Client(commands.Bot):
@@ -11,6 +12,7 @@ class Client(commands.Bot):
         intents = discord.Intents.all()
         intents.message_content = True
         self.initial_extensions = initial_extensions
+        self.log = Logger.get_logger('main')
         self.extension_log = Logger.get_logger('extensions')
 
         # Calling the constructor method from the base class
@@ -35,3 +37,11 @@ class Client(commands.Bot):
                     self.extension_log.warning(f'Failed to load the extension [{failed}]')
             else:
                 self.extension_log.debug('No errors while loading extensions')
+
+        self.add_view(Furry(self))
+        self.add_view(Age(self))
+        self.add_view(Sexuality(self))
+        self.add_view(Games(self))
+        self.add_view(Notifications(self))
+        self.add_view(Verify(self))
+        self.log.debug(f'Persistent views: {self.persistent_views}')
