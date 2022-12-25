@@ -55,7 +55,7 @@ async def main(client, config):
         await client.start(config.token)
 
 initial_extensions = (
-    'gaymerbot.extensions.tags',
+    'gaymerbot.extensions.roles',
     'gaymerbot.extensions.events',
     'gaymerbot.extensions.user_commands',
     'gaymerbot.extensions.admin_commands',

@@ -14,7 +14,7 @@ class Tags(commands.Cog):
     @app_commands.command(name='menudetags', description='Envia o menu de tags')
     @app_commands.default_permissions(administrator=True)
     @app_commands.guild_only()
-    async def tagsmenu(self, interaction: discord.Interaction) -> None:
+    async def rolemenu(self, interaction: discord.Interaction) -> None:
         furry_embed = discord.Embed(title='🦊 » Furry', description='Você faz parte da comunidade furry ?', colour=discord.Colour.random())
         age_embed = discord.Embed(title='🔞 » Idade', description='Qual sua idade ?', colour=discord.Colour.random())
         sexuality_embed = discord.Embed(title='❤ » Orientação sexual', description='Qual sua orientação sexual ?', colour=discord.Colour.random())
