@@ -30,12 +30,12 @@ def setup_logging(debug):
 @click.option('--debug', is_flag=True, help='Launch with debug mode')
 def main(debug):
     initial_extensions = (
-        'gaymerbot.extensions.roles',
-        'gaymerbot.extensions.events',
+        'gaymerbot.extensions.Events',
+        'gaymerbot.extensions.RoleSelector',
+        'gaymerbot.extensions.UserCommands',
+        'gaymerbot.extensions.AdminCommands',
+        'gaymerbot.extensions.DeveloperCommands'
         'gaymerbot.extensions.TwitchIntegrations',
-        'gaymerbot.extensions.user_commands',
-        'gaymerbot.extensions.admin_commands',
-        'gaymerbot.extensions.developer_commands'
     )
     log = setup_logging(debug)
     start_time = time.time()

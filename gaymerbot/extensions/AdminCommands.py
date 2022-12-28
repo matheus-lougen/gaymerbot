@@ -6,7 +6,7 @@ from gaymerbot.modules import Logger
 from gaymerbot.views import Purge, Verify
 
 
-class admin_commands(commands.Cog):
+class AdminCommands(commands.Cog):
     def __init__(self, client):
         self.client = client
         self.log = Logger.get_logger('commands')
@@ -49,4 +49,4 @@ class admin_commands(commands.Cog):
 
 
 async def setup(client):
-    await client.add_cog(admin_commands(client))
+    await client.add_cog(AdminCommands(client))
