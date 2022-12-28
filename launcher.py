@@ -18,6 +18,7 @@ def setup_logging(debug):
     logger = Logger()
     logger.setup_formatters()
     log = logger.setup_logger('main', debug_mode=debug, file_level=logging.INFO, stream_level=logging.INFO)
+    logger.setup_logger('twitch', debug_mode=debug, file_level=logging.INFO, stream_level=logging.INFO)
     logger.setup_logger('commands', debug_mode=debug, file_level=logging.INFO, stream_level=logging.INFO)
     logger.setup_logger('extensions', debug_mode=debug, file_level=logging.INFO, stream_level=logging.INFO)
     logger.setup_logger('discord', file_level=logging.INFO, stream_level=logging.INFO)
@@ -31,7 +32,7 @@ def main(debug):
     initial_extensions = (
         'gaymerbot.extensions.roles',
         'gaymerbot.extensions.events',
-        'gaymerbot.extensions.Twitch',
+        'gaymerbot.extensions.TwitchIntegrations',
         'gaymerbot.extensions.user_commands',
         'gaymerbot.extensions.admin_commands',
         'gaymerbot.extensions.developer_commands'
