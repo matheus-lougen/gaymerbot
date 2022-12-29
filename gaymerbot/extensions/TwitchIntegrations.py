@@ -98,11 +98,11 @@ class TwitchIntegrations(commands.GroupCog, name='twitch'):
             if await twitch_user.is_live():
                 stream = await twitch_user.get_stream()
                 embed = await stream.to_embed()
-                await interaction.response.send_message(embed=embed, ephemeral=True)
+                await interaction.response.send_message(embed=embed, ephemeral=False)
             else:
-                await interaction.response.send_message(f'Desculpe, o usuário não está ao vivo no momento!')
+                await interaction.response.send_message(f'Desculpe, o usuário ``{twitch_user.user_login}`` não está ao vivo no momento!', ephemeral=True)
         else:
-            await interaction.response.send_message(f'Desculpe, não pude encontrar o usuário ``{twitch_user.user_login}``')
+            await interaction.response.send_message(f'Desculpe, não pude encontrar o usuário ``{twitch_user.user_login}``', ephemeral=True)
 
     @app_commands.command(name='user', description='Informações sobre um streamer')
     @app_commands.describe(user_login='Nome de usuário do streamer')
@@ -110,8 +110,11 @@ class TwitchIntegrations(commands.GroupCog, name='twitch'):
     async def user(self, interaction: discord.Interaction, user_login: str) -> None:
         twitch_api = await Twitch(self.client.config.twitch_app_id, self.client.config.twitch_app_secret)
         twitch_user = await TwitchUser.get(twitch_api, user_login)
-        embed = await twitch_user.to_embed()
-        await interaction.response.send_message(embed=embed)
+        if await twitch_user.found():
+            embed = await twitch_user.to_embed()
+            await interaction.response.send_message(embed=embed)
+        else:
+            await interaction.response.send_message(f'Desculpe, não pude encontrar o usuário ``{twitch_user.user_login}``', ephemeral=True)
 
     @commands.Cog.listener()
     async def on_ready(self):
