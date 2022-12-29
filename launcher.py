@@ -34,7 +34,7 @@ def main(debug):
         'gaymerbot.extensions.RoleSelector',
         'gaymerbot.extensions.UserCommands',
         'gaymerbot.extensions.AdminCommands',
-        'gaymerbot.extensions.DeveloperCommands'
+        'gaymerbot.extensions.DeveloperCommands',
         'gaymerbot.extensions.TwitchIntegrations',
     )
     log = setup_logging(debug)
