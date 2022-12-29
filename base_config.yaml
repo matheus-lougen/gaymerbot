@@ -3,4 +3,10 @@
 # https://github.com/SystemFalll
 
 # Discord API token
-token: 'token'
+token: 'discord_token'
+
+# Twitch APP ID
+twitch_app_id: 'twitch_app_id'
+
+# Twitch APP secret
+twitch_app_secret: 'twitch_app_secret'
