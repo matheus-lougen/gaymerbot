@@ -6,7 +6,6 @@ cffi==1.15.1
 charset-normalizer==2.1.1
 click==8.1.3
 colorlog==6.7.0
-discord.py @ file:///mnt/b/python/discordbots/gaymerbot/discord.py
 frozenlist==1.3.3
 idna==3.4
 multidict==6.0.3
