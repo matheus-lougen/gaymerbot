@@ -17,7 +17,7 @@ class Events(commands.Cog):
         self.log.debug(f'Client latency is: {round(self.client.latency * 1000)}ms')
 
         while True:
-            await self.client.change_presence(activity=discord.Game(name='V1.2'))
+            await self.client.change_presence(activity=discord.Game(name='V1.3'))
             await asyncio.sleep(5)
             await self.client.change_presence(activity=discord.Game(name='/help'))
             await asyncio.sleep(5)
