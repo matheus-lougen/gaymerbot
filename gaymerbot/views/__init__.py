@@ -1,2 +1,2 @@
-from .admin_commands_views import Purge, Verify
-from .tags_views import Furry, Age, Sexuality, Games, Notifications
+from .AdminCommandsViews import Purge, Verify
+from .RoleSelectorViews import Furry, Age, Sexuality, Games, Notifications

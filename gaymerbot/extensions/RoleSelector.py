@@ -6,7 +6,7 @@ from gaymerbot.modules import Logger
 from gaymerbot.views import Furry, Age, Sexuality, Notifications, Games
 
 
-class Tags(commands.Cog):
+class RoleSelector(commands.Cog):
     def __init__(self, client):
         self.client = client
         self.log = Logger.get_logger('commands')
@@ -29,4 +29,4 @@ class Tags(commands.Cog):
 
 
 async def setup(client):
-    await client.add_cog(Tags(client))
+    await client.add_cog(RoleSelector(client))

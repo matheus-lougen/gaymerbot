@@ -6,7 +6,7 @@ from discord.ext import commands
 from gaymerbot.modules import Logger
 
 
-class events(commands.Cog):
+class Events(commands.Cog):
     def __init__(self, client):
         self.client = client
         self.log = Logger.get_logger('events')
@@ -26,4 +26,4 @@ class events(commands.Cog):
 
 
 async def setup(client):
-    await client.add_cog(events(client))
+    await client.add_cog(Events(client))
