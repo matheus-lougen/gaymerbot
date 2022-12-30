@@ -122,7 +122,7 @@ class Games(discord.ui.View):
         discord.SelectOption(label='Factorio', value='Factorio', description='', emoji='➡'),
         discord.SelectOption(label='Satisfactory', value='Satisfactory', description='', emoji='➡'),
         discord.SelectOption(label='Project Zomboid', value='Project Zomboid', description='', emoji='➡'),
-        discord.SelectOption(label='Nenhum desses', value='skip', description='', emoji='➡')
+        discord.SelectOption(label='Outros', value='skip', description='', emoji='➡')
     ]
 
     @discord.ui.select(cls=discord.ui.Select, placeholder='Escolha uma ou mais opções', min_values=1, max_values=7, options=options, custom_id='dropdown:games')

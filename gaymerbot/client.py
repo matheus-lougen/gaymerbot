@@ -6,8 +6,9 @@ from .views import Furry, Age, Sexuality, Games, Notifications, Verify
 
 
 class Client(commands.Bot):
-    def __init__(self, start_time, config, initial_extensions):
+    def __init__(self, config, initial_extensions, activities, start_time):
         self.config = config
+        self.activities = activities
         self.start_time = start_time
         intents = discord.Intents.all()
         intents.message_content = True
@@ -38,10 +39,18 @@ class Client(commands.Bot):
             else:
                 self.extension_log.debug('No errors while loading extensions')
 
-        self.add_view(Furry(self))
-        self.add_view(Age(self))
-        self.add_view(Sexuality(self))
-        self.add_view(Games(self))
-        self.add_view(Notifications(self))
-        self.add_view(Verify(self))
-        self.log.debug(f'Persistent views: {self.persistent_views}')
+        await self.add_persistant_views()
+
+    async def add_persistant_views(self):
+        try:
+            self.add_view(Furry(self))
+            self.add_view(Age(self))
+            self.add_view(Sexuality(self))
+            self.add_view(Games(self))
+            self.add_view(Notifications(self))
+            self.add_view(Verify(self))
+        except Exception:
+            self.log.exception('An error ocurred while loading persistant views!')
+        else:
+            self.log.info('Sucessfully loaded all persistant views')
+            self.log.debug(self.persistent_views)
