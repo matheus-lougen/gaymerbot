@@ -2,7 +2,7 @@ import discord
 from discord import utils
 
 
-class SelectMenu():
+class SelectMenu:
     def __init__(self, interaction, select):
         self.interaction = interaction
         self.select = select
@@ -38,12 +38,34 @@ class Age(discord.ui.View):
         super().__init__(timeout=None)
 
     options = [
-        discord.SelectOption(label='+18', value='+18', description='Eu tenho 18 anos ou mais', emoji='➡'),
-        discord.SelectOption(label='-18', value='-18', description='Eu tenho menos de 18 anos', emoji='➡'),
-        discord.SelectOption(label='Prefiro não dizer', value='skip', description='Prefiro não informar minha idade', emoji='➡')
+        discord.SelectOption(
+            label='+18',
+            value='+18',
+            description='Eu tenho 18 anos ou mais',
+            emoji='➡',
+        ),
+        discord.SelectOption(
+            label='-18',
+            value='-18',
+            description='Eu tenho menos de 18 anos',
+            emoji='➡',
+        ),
+        discord.SelectOption(
+            label='Prefiro não dizer',
+            value='skip',
+            description='Prefiro não informar minha idade',
+            emoji='➡',
+        ),
     ]
 
-    @discord.ui.select(cls=discord.ui.Select, placeholder='Escolha uma opção', min_values=1, max_values=1, options=options, custom_id='dropdown:age')
+    @discord.ui.select(
+        cls=discord.ui.Select,
+        placeholder='Escolha uma opção',
+        min_values=1,
+        max_values=1,
+        options=options,
+        custom_id='dropdown:age',
+    )
     async def age_select(self, interaction: discord.Interaction, select: discord.ui.Select):
         selectmenu = SelectMenu(interaction, select)
         await selectmenu.fetch_option('+18')
@@ -57,14 +79,46 @@ class Sexuality(discord.ui.View):
         super().__init__(timeout=None)
 
     options = [
-        discord.SelectOption(label='Heterossexual', value='Heterossexual', description='Atração pelo sexo oposto', emoji='➡'),
-        discord.SelectOption(label='Homosexual', value='Homossexual', description='Atração pelo mesmo sexo', emoji='➡'),
-        discord.SelectOption(label='Bisexual', value='Bissexual', description='Atração por ambos os sexos', emoji='➡'),
-        discord.SelectOption(label='Pansexual', value='Panssexual', description='Atração independente do sexo', emoji='➡'),
-        discord.SelectOption(label='Prefiro não dizer', value='skip', description='Prefiro não informar minha orientação sexual', emoji='➡')
+        discord.SelectOption(
+            label='Heterossexual',
+            value='Heterossexual',
+            description='Atração pelo sexo oposto',
+            emoji='➡',
+        ),
+        discord.SelectOption(
+            label='Homosexual',
+            value='Homossexual',
+            description='Atração pelo mesmo sexo',
+            emoji='➡',
+        ),
+        discord.SelectOption(
+            label='Bisexual',
+            value='Bissexual',
+            description='Atração por ambos os sexos',
+            emoji='➡',
+        ),
+        discord.SelectOption(
+            label='Pansexual',
+            value='Panssexual',
+            description='Atração independente do sexo',
+            emoji='➡',
+        ),
+        discord.SelectOption(
+            label='Prefiro não dizer',
+            value='skip',
+            description='Prefiro não informar minha orientação sexual',
+            emoji='➡',
+        ),
     ]
 
-    @discord.ui.select(cls=discord.ui.Select, placeholder='Escolha uma opção', min_values=1, max_values=1, options=options, custom_id='dropdown:sexuality')
+    @discord.ui.select(
+        cls=discord.ui.Select,
+        placeholder='Escolha uma opção',
+        min_values=1,
+        max_values=1,
+        options=options,
+        custom_id='dropdown:sexuality',
+    )
     async def age_select(self, interaction: discord.Interaction, select: discord.ui.Select):
         selectmenu = SelectMenu(interaction, select)
         await selectmenu.fetch_option('Heterossexual')
@@ -80,11 +134,28 @@ class Furry(discord.ui.View):
         super().__init__(timeout=None)
 
     options = [
-        discord.SelectOption(label='Sim', value='Furry', description='Eu faço parte da comunidade Furry', emoji='➡'),
-        discord.SelectOption(label='Não', value='NãoFurry', description='Eu não faço parte da comunidade Furry', emoji='➡')
+        discord.SelectOption(
+            label='Sim',
+            value='Furry',
+            description='Eu faço parte da comunidade Furry',
+            emoji='➡',
+        ),
+        discord.SelectOption(
+            label='Não',
+            value='NãoFurry',
+            description='Eu não faço parte da comunidade Furry',
+            emoji='➡',
+        ),
     ]
 
-    @discord.ui.select(cls=discord.ui.Select, placeholder='Escolha uma opção', min_values=1, max_values=1, options=options, custom_id='dropdown:furry')
+    @discord.ui.select(
+        cls=discord.ui.Select,
+        placeholder='Escolha uma opção',
+        min_values=1,
+        max_values=1,
+        options=options,
+        custom_id='dropdown:furry',
+    )
     async def age_select(self, interaction: discord.Interaction, select: discord.ui.Select):
         selectmenu = SelectMenu(interaction, select)
         await selectmenu.fetch_option('Furry')
@@ -97,11 +168,28 @@ class Notifications(discord.ui.View):
         super().__init__(timeout=None)
 
     options = [
-        discord.SelectOption(label='Sim', value='Notificações', description='Eu quero receber notificações sobre coisas novas', emoji='➡'),
-        discord.SelectOption(label='Não', value='skip', description='Eu não quero receber notificações sobre coisas novas', emoji='➡')
+        discord.SelectOption(
+            label='Sim',
+            value='Notificações',
+            description='Eu quero receber notificações sobre coisas novas',
+            emoji='➡',
+        ),
+        discord.SelectOption(
+            label='Não',
+            value='skip',
+            description='Eu não quero receber notificações sobre coisas novas',
+            emoji='➡',
+        ),
     ]
 
-    @discord.ui.select(cls=discord.ui.Select, placeholder='Escolha uma ou mais opções', min_values=1, max_values=1, options=options, custom_id='dropdown:notifications')
+    @discord.ui.select(
+        cls=discord.ui.Select,
+        placeholder='Escolha uma ou mais opções',
+        min_values=1,
+        max_values=1,
+        options=options,
+        custom_id='dropdown:notifications',
+    )
     async def age_select(self, interaction: discord.Interaction, select: discord.ui.Select):
         selectmenu = SelectMenu(interaction, select)
         await selectmenu.fetch_option('Notificações')
@@ -120,12 +208,29 @@ class Games(discord.ui.View):
         discord.SelectOption(label='Pubg', value='Pubg', description='', emoji='➡'),
         discord.SelectOption(label='Roblox', value='Roblox', description='', emoji='➡'),
         discord.SelectOption(label='Factorio', value='Factorio', description='', emoji='➡'),
-        discord.SelectOption(label='Satisfactory', value='Satisfactory', description='', emoji='➡'),
-        discord.SelectOption(label='Project Zomboid', value='Project Zomboid', description='', emoji='➡'),
-        discord.SelectOption(label='Outros', value='skip', description='', emoji='➡')
+        discord.SelectOption(
+            label='Satisfactory',
+            value='Satisfactory',
+            description='',
+            emoji='➡',
+        ),
+        discord.SelectOption(
+            label='Project Zomboid',
+            value='Project Zomboid',
+            description='',
+            emoji='➡',
+        ),
+        discord.SelectOption(label='Outros', value='skip', description='', emoji='➡'),
     ]
 
-    @discord.ui.select(cls=discord.ui.Select, placeholder='Escolha uma ou mais opções', min_values=1, max_values=7, options=options, custom_id='dropdown:games')
+    @discord.ui.select(
+        cls=discord.ui.Select,
+        placeholder='Escolha uma ou mais opções',
+        min_values=1,
+        max_values=7,
+        options=options,
+        custom_id='dropdown:games',
+    )
     async def age_select(self, interaction: discord.Interaction, select: discord.ui.Select):
         selectmenu = SelectMenu(interaction, select)
         await selectmenu.fetch_option('Minecraft')

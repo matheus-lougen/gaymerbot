@@ -11,7 +11,7 @@ class StreamNotFoundError(Exception):
     pass
 
 
-class TwitchStream():
+class TwitchStream:
     @classmethod
     async def get(cls, raw_stream_data, twitch_user) -> object:
         self = TwitchStream()
@@ -29,17 +29,34 @@ class TwitchStream():
     async def to_embed(self) -> discord.Embed or None:
         try:
             stream_url = await self.get_url()
-            embed = discord.Embed(title=f'**{self.raw_stream_data.title}**', description='', url=stream_url, colour=discord.Colour.purple())
-            embed.add_field(name='Streamer:', value=f'``{self.raw_stream_data.user_name}``', inline=True)
-            embed.add_field(name='Jogo:', value=f'``{self.raw_stream_data.game_name}``', inline=True)
-            embed.add_field(name='Número de viewers:', value=f'``{self.raw_stream_data.viewer_count}``', inline=True)
+            embed = discord.Embed(
+                title=f'**{self.raw_stream_data.title}**',
+                description='',
+                url=stream_url,
+                colour=discord.Colour.purple(),
+            )
+            embed.add_field(
+                name='Streamer:',
+                value=f'``{self.raw_stream_data.user_name}``',
+                inline=True,
+            )
+            embed.add_field(
+                name='Jogo:',
+                value=f'``{self.raw_stream_data.game_name}``',
+                inline=True,
+            )
+            embed.add_field(
+                name='Número de viewers:',
+                value=f'``{self.raw_stream_data.viewer_count}``',
+                inline=True,
+            )
             embed.set_image(url=self.raw_stream_data.thumbnail_url.format(width=800, height=600))
             return embed
         except StreamNotFoundError:
             return None
 
 
-class TwitchUser():
+class TwitchUser:
     @classmethod
     async def get(cls, twitch_api, user_login) -> object:
         self = TwitchUser()
@@ -67,8 +84,17 @@ class TwitchUser():
     async def to_embed(self) -> discord.Embed:
         try:
             user_url = await self.get_url()
-            embed = discord.Embed(title=f'**{self.raw_user_data.display_name}**', description=f'{self.raw_user_data.description}', url=user_url, colour=discord.Colour.purple())
-            embed.add_field(name='Total de viewers:', value=f'``{self.raw_user_data.view_count}``', inline=True)
+            embed = discord.Embed(
+                title=f'**{self.raw_user_data.display_name}**',
+                description=f'{self.raw_user_data.description}',
+                url=user_url,
+                colour=discord.Colour.purple(),
+            )
+            embed.add_field(
+                name='Total de viewers:',
+                value=f'``{self.raw_user_data.view_count}``',
+                inline=True,
+            )
             embed.set_image(url=self.raw_user_data.profile_image_url)
             return embed
         except UserNotFoundError:

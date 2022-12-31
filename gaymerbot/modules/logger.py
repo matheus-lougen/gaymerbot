@@ -4,19 +4,19 @@ import functools
 from logging import handlers
 
 
-class Logger():
-    """docstring for supremelogger"""
-
+class Logger:
     def __init__(
         self,
         date_format='%d-%m-%Y %H:%M:%S',
         file_format='%(asctime)s %(name)s %(levelname)-4s [%(filename)s:%(lineno)d] %(message)s',
         stream_format='%(light_green)s%(asctime)s%(reset)s %(red)s%(name)s%(reset)s %(bold)s%(log_color)s%(levelname)-4s%(reset)s %(yellow)s[%(filename)s:%(lineno)d]%(reset)s %(message)s',
-        log_colors={'DEBUG': 'cyan',
-                             'INFO': 'green',
-                             'WARNING': 'yellow',
-                             'ERROR': 'red',
-                             'CRITICAL': 'red'}
+        log_colors={
+            'DEBUG': 'cyan',
+            'INFO': 'green',
+            'WARNING': 'yellow',
+            'ERROR': 'red',
+            'CRITICAL': 'red',
+        },
     ):
 
         self.date_format = date_format
@@ -28,13 +28,20 @@ class Logger():
         # Create a built-in formatter for the file output
         self.file_formatter = logging.Formatter(self.file_format, datefmt=self.date_format, style='%')
         # Create a colored stream formatter for the terminal output
-        self.stream_formatter = colorlog.ColoredFormatter(self.stream_format, datefmt=self.date_format, style='%', log_colors=self.log_colors)
+        self.stream_formatter = colorlog.ColoredFormatter(
+            self.stream_format,
+            datefmt=self.date_format,
+            style='%',
+            log_colors=self.log_colors,
+        )
 
-    def setup_logger(self,
-                     name: str,
-                     debug_mode: bool = False,
-                     file_level=logging.NOTSET,
-                     stream_level=logging.NOTSET):
+    def setup_logger(
+        self,
+        name: str,
+        debug_mode: bool = False,
+        file_level=logging.NOTSET,
+        stream_level=logging.NOTSET,
+    ):
 
         # Set file and stream level to debug if debug mode is on
         if debug_mode is True:
@@ -82,6 +89,7 @@ class Logger():
                     log.exception(e)
 
             return runner
+
         return pre_run
 
 
@@ -90,8 +98,18 @@ def main():
     logger = Logger()
     logger.setup_handlers(name='supremelogger.logs')
     logger.setup_formatters()
-    main_log = logger.setup_logger('main', debug_mode=True, file_level=logging.INFO, stream_level=logging.INFO)
-    https_log = logger.setup_logger('https', debug_mode=False, file_level=logging.WARNING, stream_level=logging.WARNING)
+    main_log = logger.setup_logger(
+        'main',
+        debug_mode=True,
+        file_level=logging.INFO,
+        stream_level=logging.INFO,
+    )
+    https_log = logger.setup_logger(
+        'https',
+        debug_mode=False,
+        file_level=logging.WARNING,
+        stream_level=logging.WARNING,
+    )
 
     main_log.debug('this is a DEBUG message')
     main_log.info('this is a INFO message')

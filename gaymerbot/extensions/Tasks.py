@@ -7,7 +7,11 @@ from twitchAPI.twitch import Twitch
 
 import gaymerbot
 from gaymerbot.modules import Logger
-from gaymerbot.modules import TwitchUser, UserNotFoundError, StreamNotFoundError
+from gaymerbot.modules import (
+    TwitchUser,
+    UserNotFoundError,
+    StreamNotFoundError,
+)
 
 
 class Tasks(commands.Cog):
@@ -62,7 +66,10 @@ class Tasks(commands.Cog):
         self.user_name = 'gaules'
         self.channel_id = 728612092315435098
         self.notification_sent = False
-        self.twitch_api = await Twitch(self.client.config.twitch_app_id, self.client.config.twitch_app_secret)
+        self.twitch_api = await Twitch(
+            self.client.config.twitch_app_id,
+            self.client.config.twitch_app_secret,
+        )
         self.log.info('Started task [twitch_notifier]')
 
 

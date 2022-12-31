@@ -17,7 +17,11 @@ class Client(commands.Bot):
         self.extension_log = Logger.get_logger('extensions')
 
         # Calling the constructor method from the base class
-        super().__init__(command_prefix=commands.when_mentioned_or('!'), intents=intents, help_command=None)
+        super().__init__(
+            command_prefix=commands.when_mentioned_or('!'),
+            intents=intents,
+            help_command=None,
+        )
 
     async def setup_hook(self) -> None:
         if not self.initial_extensions:

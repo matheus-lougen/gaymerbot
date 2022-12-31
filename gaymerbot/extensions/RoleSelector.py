@@ -15,11 +15,31 @@ class RoleSelector(commands.Cog):
     @app_commands.default_permissions(administrator=True)
     @app_commands.guild_only()
     async def rolemenu(self, interaction: discord.Interaction) -> None:
-        furry_embed = discord.Embed(title='🦊 » Furry', description='Você faz parte da comunidade furry ?', colour=discord.Colour.random())
-        age_embed = discord.Embed(title='🔞 » Idade', description='Qual sua idade ?', colour=discord.Colour.random())
-        sexuality_embed = discord.Embed(title='❤ » Orientação sexual', description='Qual sua orientação sexual ?', colour=discord.Colour.random())
-        games_embed = discord.Embed(title='🎮 » Jogos', description='Quais jogos você joga ou se interessa ?', colour=discord.Colour.random())
-        notification_embed = discord.Embed(title='🔔 » Notificações', description='Você deseja receber notificações ?', colour=discord.Colour.random())
+        furry_embed = discord.Embed(
+            title='🦊 » Furry',
+            description='Você faz parte da comunidade furry ?',
+            colour=discord.Colour.random(),
+        )
+        age_embed = discord.Embed(
+            title='🔞 » Idade',
+            description='Qual sua idade ?',
+            colour=discord.Colour.random(),
+        )
+        sexuality_embed = discord.Embed(
+            title='❤ » Orientação sexual',
+            description='Qual sua orientação sexual ?',
+            colour=discord.Colour.random(),
+        )
+        games_embed = discord.Embed(
+            title='🎮 » Jogos',
+            description='Quais jogos você joga ou se interessa ?',
+            colour=discord.Colour.random(),
+        )
+        notification_embed = discord.Embed(
+            title='🔔 » Notificações',
+            description='Você deseja receber notificações ?',
+            colour=discord.Colour.random(),
+        )
         await interaction.channel.send(embed=furry_embed, view=Furry(self.client))
         await interaction.channel.send(embed=age_embed, view=Age(self.client))
         await interaction.channel.send(embed=sexuality_embed, view=Sexuality(self.client))

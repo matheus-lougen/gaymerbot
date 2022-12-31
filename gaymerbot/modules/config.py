@@ -2,15 +2,19 @@ import os
 import yaml
 import logging
 
-from .logger import Logger
+from .Logger import Logger
 
 
-class Config():
-
+class Config:
     def __init__(self, config_path):
         logger = Logger()
         logger.setup_formatters()
-        self.log = logger.setup_logger('config', debug_mode=False, file_level=logging.INFO, stream_level=logging.INFO)
+        self.log = logger.setup_logger(
+            'config',
+            debug_mode=False,
+            file_level=logging.INFO,
+            stream_level=logging.INFO,
+        )
 
         if not os.path.exists(config_path):
             self.log.critical(f'Could not find a valid config file at: {config_path}')

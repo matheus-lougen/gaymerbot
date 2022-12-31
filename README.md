@@ -20,7 +20,7 @@ Run `$ git clone -b development https://github.com/SystemFalll/gaymerbot` to get
 
 3.  **Setup venv**
 
-Access the project folder if you haven't already `$ cd gaymerbot` 
+Access the project folder if you haven't already `$ cd gaymerbot`
 Then just do  `$ python3.11 -m virtualenv venv`
 
 4.  **Install dependencies**
